@@ -42,15 +42,8 @@ jobs:
       - name: Building production
         run: yarn build
 
-      - name: Deploying to gh-page
-        env:
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          github_token: ${{ secrets.DEPLOY_KEY }}
-          repository: ${{ github.repository }}
-        run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
-          git remote set-url origin https://git@github.com/${repository}
-          yarn deploy
-
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.PRIVATE_KEY }}
+          publish_dir: ./build
