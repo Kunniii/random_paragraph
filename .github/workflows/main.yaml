@@ -36,9 +36,6 @@ jobs:
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Running test
-        run: yarn test
-
       - name: Building production
         run: yarn build
 

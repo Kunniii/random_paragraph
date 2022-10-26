@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          I edit this string!
+          Learn VueJS
         </a>
       </header>
     </div>
