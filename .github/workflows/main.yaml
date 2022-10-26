@@ -11,36 +11,23 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version:
-          - 18.12.0
-
     steps:
       - name: Checkout actions
         uses: actions/checkout@v2
-        
-      - name: Use Node.js @v-${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-
       - name: Building production
         run: yarn build
 
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     deploy_key: ${{ secrets.DEPLOY_KEY }}
-      #     publish_dir: ./build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ./build
