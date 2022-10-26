@@ -1,0 +1,57 @@
+name: React Static Page CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version:
+          - 14.x
+          - 16.x
+
+    steps:
+      - name: Checkout actions
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js @v-${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Running test
+        run: yarn test
+
+      - name: Building production
+        run: yarn build
+
+      - name: Deploying to gh-page
+        env:
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.DEPLOY_KEY }}
+          repository: ${{ github.repository }}
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          yarn deploy
+
