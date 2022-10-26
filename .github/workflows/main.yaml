@@ -26,15 +26,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install dependencies
+        run: yarn
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: |
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install dependencies
-        run: yarn
 
       - name: Running test
         run: yarn test
