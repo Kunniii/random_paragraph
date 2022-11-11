@@ -21,10 +21,10 @@ function App() {
     }
   }
 
-  const copyToClipboard = () => {
+  const copyToClipboard = async () => {
     if (paragraph === '') return;
-    alert("Data copied!!");
-    navigator.clipboard.writeText(paragraph);
+    await navigator.clipboard.writeText(paragraph);
+    alert("Data copied!");
   }
 
   const saveToFile = () => {
@@ -35,7 +35,7 @@ function App() {
   return (
     <Fragment>
       <div className="text-center">
-        <h1 className="font-bold text-3xl mb-4">Random Paragraph</h1>
+        <h1 className="font-bold text-3xl mb-4 select-none">Random Paragraph</h1>
         <input
           id="word-count"
           type="number"
@@ -46,30 +46,30 @@ function App() {
             }
           }}
           placeholder="Number of words..."
-          className="border-stone-900 border-2 rounded-lg px-2 py-1"
+          className="border-stone-900 border-2 rounded-lg px-2 py-1 select-none"
         />
         <div className="text-base mt-3">
           <input id="rot_checkbox" type="checkbox" checked={useROT} onChange={e => setUseROT(!useROT)} />
           <label
             htmlFor="rot_checkbox"
-            className="select-none mb-3"
+            className="select-none mb-3 select-none"
           >Use ROT13 Encryption</label>
         </div>
         <button
           onClick={() => generate()}
-          className="mx-5 mt-2 px-4 py-2 bg-green-500 hover:bg-green-700 rounded-lg text-white font-bold"
+          className="mx-5 mt-2 px-4 py-2 bg-green-500 hover:bg-green-700 rounded-lg text-white font-bold select-none"
         >
           Generate
         </button>
         <button
           onClick={() => saveToFile()}
-          className="mx-5 mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white font-bold"
+          className="mx-5 mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white font-bold select-none"
         >
           Save
         </button>
         <button
           onClick={() => copyToClipboard()}
-          className="mx-5 mt-2 px-4 py-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white font-bold"
+          className="mx-5 mt-2 px-4 py-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white font-bold select-none"
         >
           Copy
         </button>
