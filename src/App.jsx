@@ -56,7 +56,7 @@ function App() {
 
   return (
     <Fragment>
-      <div className="text-center rounded-xl border mt-3 mx-2 bg-white py-5 drop-shadow-lg">
+      <div className="text-center rounded-xl border mt-2 mx-2 bg-white py-5 drop-shadow-lg">
         <h1 className="font-bold text-3xl mb-4 select-none">Random Paragraph</h1>
         <input
           id="word-count"
@@ -120,7 +120,7 @@ function App() {
         ></p>
       </div>
       {paragraph ? (
-        <div className="px-5 py-3 mx-2 mt-5 rounded-xl border bg-white drop-shadow-lg duration-200 flex justify-center">
+        <div className="p-3 mx-2 my-2 rounded-xl border bg-white drop-shadow-lg duration-200 flex justify-center">
           <p
             className="text-justify"
             id="paragraph"
