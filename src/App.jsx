@@ -68,7 +68,7 @@ function App() {
             }
           }}
           placeholder="Number of words..."
-          className="outline-none border focus:scale-110 duration-200 rounded-lg px-2 py-1 select-none"
+          className="outline-none border focus:scale-110 hover:scale-110 duration-200 rounded-lg px-2 py-1 select-none"
         />
         <div className="text-base mt-3">
           <input
@@ -86,25 +86,25 @@ function App() {
         </div>
         <button
           onClick={generate}
-          className="mx-5 mt-2 px-4 py-2 bg-lime-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
+          className="mx-2 mt-2 px-4 py-2 bg-lime-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
         >
           Generate
         </button>
         <button
           onClick={saveToFile}
-          className="mx-5 mt-2 px-4 py-2 bg-cyan-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
+          className="mx-2 mt-2 px-4 py-2 bg-cyan-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
         >
           Save
         </button>
         <button
           onClick={copyToClipboard}
-          className="mx-5 mt-2 px-4 py-2 bg-amber-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
+          className="mx-2 mt-2 px-4 py-2 bg-amber-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
         >
           Copy
         </button>
         <button
           onClick={() => setParagraph("")}
-          className="mx-5 mt-2 px-4 py-2 bg-rose-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
+          className="mx-2 mt-2 px-4 py-2 bg-rose-500 hover:scale-110 duration-150 rounded-xl text-white font-bold select-none"
         >
           Clear
         </button>
